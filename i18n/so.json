@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"AhmedG612"
+		]
+	},
+	"themetoggle-desc": "Waxay u oggolaanaysaa bogga inuu abuuro mawduucyo maxalli ah. Waxaa loo habeeyey habaynada leh kaydin xooggan, halkaas oo xal ku salaysan buskud uu khalkhal gelin karo kaydka.",
+	"themetoggle-prefs-theme-label": "Mawduuc",
+	"themetoggle-prefs-theme-desc": "Dooro mawduuca lagu soo bandhigayo wiki-gan:",
+	"themetoggle-simple-switch": "Mawduuca hadda jira waa \"$1\". Taabo si aad u beddesho.",
+	"themetoggle-simple-switch-short": "Mawduuca hadda jira: $1",
+	"themetoggle-dropdown-switch": "Fidi si aad u doorato mawduuc.",
+	"themetoggle-skinprefs": "Muuqaalka",
+	"themetoggle-dropdown-section-themes": "Mawduucyada",
+	"themetoggle-dropdown-section-features": "Dookhyada kale",
+	"themetoggle-css-pages-list-intro": "Bogagga CSS ee soo socda ayaa la tixraacayaa:",
+	"themetoggle-bundled-list-intro": "Mawduucyada soo socda ma laha xaashiyo qaabayn gaar ah sababtoo ah waxaa lagu calaamadeeyey inay ku jiraan xidhmo:",
+	"themetoggle-list-display-as": "Lagu soo bandhigay sida",
+	"themeusage": "Tirakoobka isticmaalka mawduucyada",
+	"themeusage-theme": "Mawduuc",
+	"themeusage-usercount": "Tirada isticmaaleyaasha",
+	"themeusage-noresults": "Lama helin isticmaalayaal leh dookhyo mawduuc aan ahayn kan caadiga ah.",
+	"themeusage-activeusers": "Adeegsadayaasha firfircoon",
+	"themeusage-unknown-theme": "Lama yaqaan",
+	"themeusage-unknown-theme-tip": "Isticmaalayaashan waxay dookhooda ku leeyihiin mawduuc aan la garanayn, taas oo laga yaabo inay sabab u tahay in mawduuca markii dambe la tirtiray. Waxay arki doonaan mawduuca caadiga ah halkii.",
+	"theme-none": "Midna",
+	"theme-auto": "Otomaatiga (nidaamka)",
+	"theme-auto-preference-description": "Si toos ah (raac dookhyada nidaamka si loo go'aamiyo in la isticmaalo mawduuca iftiinka ama mugdiga)",
+	"theme-dark": "Madow",
+	"theme-light": "Iftiin"
+}

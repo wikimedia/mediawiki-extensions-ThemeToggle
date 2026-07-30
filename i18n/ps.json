@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"themetoggle-skinprefs": "ونگ‌بڼه",
+	"themetoggle-dropdown-section-features": "نور غوره‌توبونه",
+	"themetoggle-list-display-as": "ښودل شوی لکه",
+	"themeusage-usercount": "د کارنانو شمېر",
+	"themeusage-activeusers": "کارنده کارنان",
+	"themeusage-unknown-theme": "ناجوت",
+	"theme-none": "هېڅ",
+	"theme-auto": "خپلکاره (غونډال)",
+	"theme-auto-preference-description": "خپلکاره (د غونډال غوره‌توبونه څاري؛ ترڅو جوته کړي چې روښانه يا تياره شاليد بايد وکارول شي)",
+	"theme-dark": "تياره",
+	"theme-light": "روښانه"
+}
