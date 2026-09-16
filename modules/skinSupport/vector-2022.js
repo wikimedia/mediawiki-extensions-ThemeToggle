@@ -6,11 +6,9 @@
 module.exports = Object.freeze( {
 	...require( './default.js' ),
 
-
 	getPortletOwnerElement() {
 		return document.querySelector( '#p-vector-user-menu-preferences' );
 	},
-
 
 	getOrCreatePortlet() {
 		let retval = document.getElementById( 'pt-themes' );
@@ -24,5 +22,5 @@ module.exports = Object.freeze( {
 			owner.classList.remove( 'emptyPortlet' );
 		}
 		return retval;
-	},
+	}
 } );

@@ -1,0 +1,30 @@
+{
+	"root": true,
+	"extends": [
+		"wikimedia/client",
+		"wikimedia/mediawiki",
+		"wikimedia/jquery"
+	],
+	"globals": {
+		"require": "readonly",
+		"module": "readonly",
+		"VARS": "readonly",
+		"RLCONF": "readonly",
+		"MwSkinTheme": "readonly",
+		"__MwExtTt": "readonly"
+	},
+	"rules": {
+		"arrow-parens": [ "error", "as-needed" ],
+		"max-len": [ "warn", {
+			"code": 129
+		} ],
+		"no-bitwise": "off",
+		"no-implicit-globals": "off",
+		"no-jquery/no-parse-html-literal": "warn",
+		"no-underscore-dangle": [
+			"off",
+			"Private/internal/protected methods."
+		],
+		"one-var": "off"
+	}
+}

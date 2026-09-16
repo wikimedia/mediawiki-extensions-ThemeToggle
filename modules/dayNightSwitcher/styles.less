@@ -8,7 +8,7 @@
 		display: block;
 		padding: 0.4rem;
 		font-size: 0;
-		transition: all .3s;
+		transition: all 0.3s;
 
 		&::before {
 			content: '';
@@ -26,11 +26,11 @@
 .ext-themetoggle-simple-icon::before {
 	// Fallback
 	.cdx-mixin-css-icon( @cdx-icon-palette, @param-size-icon: @size-icon-medium );
-	
+
 	.view-light & {
 		.cdx-mixin-css-icon-background-image( @cdx-icon-bright );
 	}
-	
+
 	.view-dark & {
 		.cdx-mixin-css-icon-background-image( @cdx-icon-moon );
 	}

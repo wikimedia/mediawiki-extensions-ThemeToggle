@@ -8,22 +8,22 @@
  * - https://temtem.wiki.gg
  */
 
-var Shared = require( 'ext.themes.jsapi' ),
+const Shared = require( 'ext.themes.jsapi' ),
 	themes = Shared.getAvailableThemes();
-var $toggle, $container;
+let $toggle, $container;
 
 function updateTitle() {
 	// eslint-disable-next-line mediawiki/msg-doc
-	var themeName = mw.msg( 'theme-' + MwSkinTheme.getCurrent() );
+	const themeName = mw.msg( 'theme-' + MwSkinTheme.getCurrent() );
 
-	var msg = mw.msg( 'themetoggle-simple-switch', themeName );
+	const msg = mw.msg( 'themetoggle-simple-switch', themeName );
 	$toggle.setAttribute( 'title', msg );
 
 	$toggle.innerText = mw.msg( 'themetoggle-simple-switch-short', themeName );
 }
 
 function cycleTheme() {
-	var nextIndex = themes.indexOf( MwSkinTheme.getCurrent() ) + 1;
+	let nextIndex = themes.indexOf( MwSkinTheme.getCurrent() ) + 1;
 	if ( nextIndex >= themes.length ) {
 		nextIndex = 0;
 	}
@@ -37,7 +37,7 @@ function initialise() {
 
 	$toggle = document.createElement( 'span' );
 	$toggle.className = 'ext-themetoggle-simple-icon';
-	$toggle.addEventListener( 'mousedown', function ( event ) {
+	$toggle.addEventListener( 'mousedown', event => {
 		if ( event.which === 1 || event.button === 0 ) {
 			cycleTheme();
 		}

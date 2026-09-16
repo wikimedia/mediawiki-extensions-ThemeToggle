@@ -6,18 +6,8 @@
 		<exclude name="MediaWiki.Commenting.FunctionComment.MissingDocumentationPrivate" />
 		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeSingleLineComment.NewLineComment" />
 		<exclude name="MediaWiki.Usage.InArrayUsage.Found" />
-		<exclude name="MediaWiki.Usage.StaticClosure.StaticClosure" />
 	</rule>
 	<file>.</file>
 	<arg name="extensions" value="php"/>
 	<arg name="encoding" value="UTF-8"/>
-	<exclude-pattern>*/vendor/*</exclude-pattern>
-	<exclude-pattern>*/out/*</exclude-pattern>
-	<exclude-pattern>*/node_modules/*</exclude-pattern>
-	<rule ref="Generic.Files.LineLength">
-		<properties>
-			<property name="lineLimit" value="129" />
-			<property name="absoluteLineLimit" value="9999" />
-		</properties>
-	</rule>
 </ruleset>

@@ -117,7 +117,7 @@ class ThemeAndFeatureRegistry {
 		$this->postLoad( $options );
 
 		// Construct ThemeInfo objects from cachable constructor options
-		$this->infos = array_map( fn ( $info ) => new ThemeInfo( $info ), $options );
+		$this->infos = array_map( static fn ( $info ) => new ThemeInfo( $info ), $options );
 		$this->ids = array_keys( $this->infos );
 	}
 
@@ -159,7 +159,7 @@ class ThemeAndFeatureRegistry {
 		$this->load();
 
 		// End early if no configured theme needs special user groups
-		if ( empty( array_filter( $this->infos, fn ( $item ) => empty( $item->getEntitledUserGroups() ) ) ) ) {
+		if ( empty( array_filter( $this->infos, static fn ( $item ) => empty( $item->getEntitledUserGroups() ) ) ) ) {
 			return $this->infos;
 		}
 
@@ -296,6 +296,6 @@ class ThemeAndFeatureRegistry {
 
 	public function getThemeKinds(): array {
 		$this->load();
-		return array_map( fn ( $info ) => $info->getKind(), $this->infos );
+		return array_map( static fn ( $info ) => $info->getKind(), $this->infos );
 	}
 }
