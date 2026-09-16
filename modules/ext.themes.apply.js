@@ -52,9 +52,9 @@
 					// Specific theme class
 					'theme-' + actualTarget,
 					// Generic colour palette "lightness" class
-					`view-${themeKind}`,
+					`view-${ themeKind }`,
 					// Equivalent Codex class
-					`skin-theme-clientpref-${codexKind}`
+					`skin-theme-clientpref-${ codexKind }`
 				);
 
 				if ( currentTheme === 'auto' ) {
@@ -71,7 +71,7 @@
 				linkNode.id = LINK_ID;
 				linkNode.rel = 'stylesheet';
 				linkNode.type = 'text/css';
-				linkNode.href = `${VARS.ResourceLoaderEndpoint}&modules=ext.theme.${actualTarget}`;
+				linkNode.href = `${ VARS.ResourceLoaderEndpoint }&modules=ext.theme.${ actualTarget }`;
 			} else if ( linkNode !== null ) {
 				document.head.removeChild( linkNode );
 				linkNode = null;
@@ -121,7 +121,7 @@
 
 		/* @if ( VARS.WithFeatureSupport ) */
 		setFeature( id, value ) {
-			htmlNode.classList[ value ? 'add' : 'remove' ]( `skinext-pref-${id}` );
+			htmlNode.classList[ value ? 'add' : 'remove' ]( `skinext-pref-${ id }` );
 		}
 		/* @endif */
 	} );

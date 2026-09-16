@@ -21,7 +21,9 @@ final class ThemeLinksHooks implements
 	public function onOutputPageParserOutput( $out, $parserOutput ): void {
 		$title = $out->getTitle();
 		// TODO: this needs to support other repos
-		if ( $title->getNamespace() !== NS_MEDIAWIKI || $title->getText() !== MediaWikiTextThemeDefinitions::TITLE_TEXT ) {
+		if ( $title->getNamespace() !== NS_MEDIAWIKI ||
+			$title->getText() !== MediaWikiTextThemeDefinitions::TITLE_TEXT
+		) {
 			return;
 		}
 

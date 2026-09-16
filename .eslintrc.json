@@ -1,33 +1,6 @@
 {
 	"root": true,
 	"extends": [
-		"wikimedia/client-es6",
-		"wikimedia/mediawiki",
-		"wikimedia/jquery"
-	],
-	"globals": {
-		"require": "readonly",
-		"module": "readonly",
-		"VARS": "readonly",
-		"RLCONF": "readonly",
-		"MwSkinTheme": "readonly"
-	},
-	"rules": {
-		"arrow-parens": [ "error", "as-needed" ],
-		"max-len": [ "off", {
-			"code": 129
-		} ],
-		"no-bitwise": "off",
-		"no-implicit-globals": "off",
-		"no-jquery/no-parse-html-literal": "warn",
-		"no-underscore-dangle": [
-			"off",
-			"Private/internal/protected methods."
-		],
-		"one-var": "off",
-		"no-var": "off",
-		"no-undef": "off",
-		"compat/compat": "off",
-		"es-x/no-array-prototype-includes": "off"
-	}
+		"wikimedia/server"
+	]
 }

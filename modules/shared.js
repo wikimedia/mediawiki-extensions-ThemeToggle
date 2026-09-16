@@ -24,17 +24,18 @@ module.exports.LOCAL_FEATURES_PREF_NAME = 'skin-theme-features';
 module.exports.REMOTE_PREF_NAME = module.exports.CONFIG.themePreferenceKey;
 
 /** @type {SkinSupportProvider} */
-const skinSupport = require( `./skinSupport/${module.exports.CONFIG.skinSupportScript}.js` );
+const skinSupport = require( `./skinSupport/${ module.exports.CONFIG.skinSupportScript }.js` );
 
 /** @type {BroadcastChannel|false} */
+// eslint-disable-next-line compat/compat
 const themeChangeChannel = window.BroadcastChannel && new BroadcastChannel( 'ThemeToggle__OnThemeChange' );
 
-/** @type {bool} */
+/** @type {boolean} */
 const isAnonymous = mw.config.get( 'wgUserName' ) === null;
 
 function _setAccountPreference( value ) {
-	mw.loader.using( 'mediawiki.api' ).then( function () {
-		var api = new mw.Api();
+	mw.loader.using( 'mediawiki.api' ).then( () => {
+		const api = new mw.Api();
 		api.post( {
 			action: 'options',
 			format: 'json',
@@ -80,7 +81,7 @@ module.exports.getSwitcherMountPoint = function () {
 module.exports.trySanitisePreference = function () {
 	if (
 		isAnonymous &&
-		!this.getAvailableThemeIds().includes( localStorage.getItem( module.exports.LOCAL_PREF_NAME ) )
+        !this.getAvailableThemeIds().includes( localStorage.getItem( module.exports.LOCAL_PREF_NAME ) )
 	) {
 		module.exports.changeTheme( module.exports.CONFIG.defaultTheme, {
 			fireHooks: false,
@@ -91,7 +92,7 @@ module.exports.trySanitisePreference = function () {
 
 module.exports.trySyncNewAccount = function () {
 	if ( !isAnonymous ) {
-		var prefValue = localStorage.getItem( module.exports.LOCAL_PREF_NAME );
+		const prefValue = localStorage.getItem( module.exports.LOCAL_PREF_NAME );
 		if ( prefValue ) {
 			localStorage.removeItem( module.exports.LOCAL_PREF_NAME );
 			_setAccountPreference( prefValue );
@@ -216,8 +217,8 @@ module.exports.prepare = function () {
 			const themeId = msg.data;
 			if (
 				themeId &&
-				( themeId === 'auto' || this.getAvailableThemeIds().includes( themeId ) ) &&
-				themeId !== MwSkinTheme.getCurrent()
+                ( themeId === 'auto' || this.getAvailableThemeIds().includes( themeId ) ) &&
+                themeId !== MwSkinTheme.getCurrent()
 			) {
 				this.changeTheme( themeId );
 			}
@@ -235,6 +236,6 @@ module.exports.runSwitcherInitialiser = function ( fn ) {
 };
 
 // Broadcast the `ext.themes.themeChanged( string )` hook when core is loaded
-module.exports.whenCoreLoaded( function () {
+module.exports.whenCoreLoaded( () => {
 	mw.hook( 'ext.themes.themeChanged' ).fire( MwSkinTheme.getCurrent() );
 } );
