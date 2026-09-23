@@ -33,6 +33,9 @@
 		},
 		"ext.themes.jsapi": {
 			"class": "MediaWiki\\Extension\\ThemeToggle\\ResourceLoader\\SharedJsModule",
+			"dependencies": [
+				"mediawiki.user"
+			],
 			"packageFiles": [
 				"shared.js",
 				"skinSupport/default.js",
