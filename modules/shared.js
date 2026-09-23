@@ -29,9 +29,9 @@ const skinSupport = require( `./skinSupport/${module.exports.CONFIG.skinSupportS
 /** @type {BroadcastChannel|false} */
 const themeChangeChannel = window.BroadcastChannel && new BroadcastChannel( 'ThemeToggle__OnThemeChange' );
 
-/** @type {bool} */
-const isAnonymous = mw.config.get( 'wgUserName' ) === null;
-
+/** Check for temporary account */
+/** @type {boolean} */
+const isNamed = mw.user.isNamed();
 
 function _setAccountPreference( value ) {
     mw.loader.using( 'mediawiki.api' ).then( function () {
@@ -86,7 +86,7 @@ module.exports.getSwitcherMountPoint = function () {
  */
 module.exports.trySanitisePreference = function () {
     if (
-        isAnonymous
+        !isNamed
         && !this.getAvailableThemeIds().includes( localStorage.getItem( module.exports.LOCAL_PREF_NAME ) )
     ) {
         module.exports.changeTheme( module.exports.CONFIG.defaultTheme, {
@@ -98,7 +98,7 @@ module.exports.trySanitisePreference = function () {
 
 
 module.exports.trySyncNewAccount = function () {
-    if ( !isAnonymous ) {
+    if ( isNamed ) {
         var prefValue = localStorage.getItem( module.exports.LOCAL_PREF_NAME );
         if ( prefValue ) {
             localStorage.removeItem( module.exports.LOCAL_PREF_NAME );
@@ -125,11 +125,11 @@ module.exports.changeTheme = function (
     } = {}
 ) {
     if ( remember ) {
-        if ( !isAnonymous ) {
-            // Registered user: save the theme server-side
+        if ( isNamed ) {
+            // Named user: save the theme server-side
             _setAccountPreference( value );
         } else {
-            // Anonymous user: save the theme in their browser's local storage
+            // Anonymous or temporary user: save the theme in their browser's local storage
             if ( value === module.exports.CONFIG.defaultTheme ) {
                 localStorage.removeItem( module.exports.LOCAL_PREF_NAME );
             } else {
