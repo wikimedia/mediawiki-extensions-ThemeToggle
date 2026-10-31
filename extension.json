@@ -1,7 +1,6 @@
 {
 	"name": "Theme Toggle",
 	"version": "1.9.1",
-
 	"author": [
 		"wiki.gg development",
 		"alex4401 <alex@wiki.gg>"
@@ -10,25 +9,24 @@
 	"descriptionmsg": "themetoggle-desc",
 	"license-name": "GPL-3.0-or-later",
 	"type": "other",
-
 	"requires": {
 		"MediaWiki": ">= 1.43.0",
 		"platform": {
 			"php": ">= 8.1"
 		}
 	},
-
 	"MessagesDirs": {
-		"ThemeToggle.class": [
+		"ThemeToggle": [
 			"i18n"
 		]
 	},
-
+	"ExtensionMessagesFiles": {
+		"ThemeToggleAlias": "ThemeToggle.alias.php"
+	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",
 		"remoteExtPath": "ThemeToggle/modules"
 	},
-
 	"ResourceModules": {
 		"ext.themes.apply": {
 			"class": "MediaWiki\\Extension\\ThemeToggle\\ResourceLoader\\ThemeApplyModule"
@@ -49,14 +47,12 @@
 			]
 		}
 	},
-
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\ThemeToggle\\": "includes/"
 	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
 	],
-
 	"SpecialPages": {
 		"ThemeUsage": {
 			"class": "MediaWiki\\Extension\\ThemeToggle\\SpecialPages\\SpecialThemeUsage",
@@ -66,7 +62,6 @@
 			]
 		}
 	},
-	
 	"HookHandlers": {
 		"CacheManagement": {
 			"class": "MediaWiki\\Extension\\ThemeToggle\\Hooks\\CacheManagementHooks",
@@ -113,7 +108,6 @@
 		"UserGetDefaultOptions": "Preferences",
 		"OutputPageParserOutput": "ThemeLinks"
 	},
-
 	"config_prefix": "wgThemeToggle",
 	"config": {
 		"Default": {
@@ -145,6 +139,5 @@
 			"value": false
 		}
 	},
-
 	"manifest_version": 2
 }

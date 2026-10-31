@@ -9,7 +9,6 @@ use MediaWiki\Html\Html;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\ResourceLoader\Module;
-use MediaWiki\ResourceLoader\ResourceLoader;
 use Skin;
 
 final class OutputPageHandler implements
@@ -142,7 +141,6 @@ final class OutputPageHandler implements
     private function getThemeLoadEndpointUri( OutputPage $outputPage, array $query = [] ): string {
         return wfAppendQuery( $this->config->getLoadScript(), [
             'lang' => $outputPage->getLanguage()->getCode(),
-            'debug' => ResourceLoader::inDebugMode() ? '2' : false,
             'skin' => $outputPage->getSkin()->getSkinName(),
             ...$query,
         ] );
