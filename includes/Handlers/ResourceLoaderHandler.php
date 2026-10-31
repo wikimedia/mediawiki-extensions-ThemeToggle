@@ -24,7 +24,8 @@ final class ResourceLoaderHandler implements
     public function __construct(
         private readonly ExtensionConfig $config,
         private readonly ThemeAndFeatureRegistry $registry
-    ) { }
+    ) {
+    }
 
     private function determineSwitcherStyle(): ?string {
         switch ( $this->config->get( ConfigNames::SwitcherStyle ) ) {

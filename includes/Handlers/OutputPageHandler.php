@@ -19,7 +19,8 @@ final class OutputPageHandler implements
     public function __construct(
         private readonly ExtensionConfig $config,
         private readonly ThemeAndFeatureRegistry $registry
-    ) { }
+    ) {
+    }
 
     private function isSiteCssAllowed( OutputPage $out ): bool {
         return $this->config->get( MainConfigNames::AllowSiteCSSOnRestrictedPages )

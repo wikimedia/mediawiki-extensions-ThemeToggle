@@ -3,7 +3,6 @@ namespace MediaWiki\Extension\ThemeToggle\ResourceLoader;
 
 use MediaWiki\Extension\ThemeToggle\ConfigNames;
 use MediaWiki\Extension\ThemeToggle\ExtensionConfig;
-use MediaWiki\Extension\ThemeToggle\Hooks\ThemeLoadingHooks;
 use MediaWiki\Extension\ThemeToggle\ThemeAndFeatureRegistry;
 use MediaWiki\Extension\ThemeToggle\ThemeToggleConsts;
 use MediaWiki\MediaWikiServices;

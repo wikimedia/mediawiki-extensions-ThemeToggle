@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\ThemeToggle\Repository;
 
 use InvalidArgumentException;
 use MediaWiki\Content\TextContent;
-use MediaWiki\Extension\ThemeToggle\Hooks\ThemeLoadingHooks;
 use MediaWiki\Extension\ThemeToggle\ThemeToggleConsts;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\SlotRecord;
@@ -15,7 +14,8 @@ class MediaWikiTextThemeDefinitions implements ThemeDefinitionsSource {
 
     public function __construct(
         private readonly RevisionLookup $revisionLookup,
-    ) { }
+    ) {
+    }
 
     public function getTitle() {
         return Title::makeTitle( NS_MEDIAWIKI, self::TITLE_TEXT );

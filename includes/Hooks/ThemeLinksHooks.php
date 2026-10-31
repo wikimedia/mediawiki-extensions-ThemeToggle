@@ -15,7 +15,8 @@ final class ThemeLinksHooks implements
 	public function __construct(
 		private readonly LinkRenderer $linkRenderer,
 		private readonly ThemeAndFeatureRegistry $registry
-	) { }
+	) {
+    }
 
 	public function onOutputPageParserOutput( $out, $parserOutput ): void {
 		$title = $out->getTitle();
@@ -63,7 +64,7 @@ final class ThemeLinksHooks implements
 		} else {
 			$html = $this->linkRenderer->makeLink( Title::newFromText( $theme->getCssPageName() ) );
 		}
-		
+
 		$html .= ' (' . wfMessage( 'themetoggle-list-display-as' ) . ' ';
 		$html .= $this->linkRenderer->makeLink(
 			new TitleValue( NS_MEDIAWIKI, $theme->getMessageId() ),
