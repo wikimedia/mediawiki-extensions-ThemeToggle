@@ -3,7 +3,6 @@ namespace MediaWiki\Extension\ThemeToggle;
 
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\MainConfigNames;
-use MediaWiki\WikiMap\WikiMap;
 
 class ExtensionConfig {
     public const SERVICE_NAME = 'ThemeToggle.Config';
