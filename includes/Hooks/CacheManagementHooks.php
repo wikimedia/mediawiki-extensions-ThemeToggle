@@ -17,11 +17,12 @@ final class CacheManagementHooks implements
 {
     public function __construct(
         private readonly ThemeAndFeatureRegistry $registry
-    ) { }
+    ) {
+    }
 
 	/**
 	 * @param WikiPage $wikiPage WikiPage modified
-	 * @param UserIdentity $user User performing the modification
+	 * @param UserIdentity $userIdentity User performing the modification
 	 * @param string $summary Edit summary/comment
 	 * @param int $flags Flags passed to WikiPage::doUserEditContent()
 	 * @param RevisionRecord $revisionRecord New RevisionRecord of the article

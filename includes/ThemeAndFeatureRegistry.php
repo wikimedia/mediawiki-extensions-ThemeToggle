@@ -1,7 +1,6 @@
 <?php
 namespace MediaWiki\Extension\ThemeToggle;
 
-use Wikimedia\Rdbms\Database;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\ThemeToggle\Data\ThemeInfo;
 use MediaWiki\Extension\ThemeToggle\Repository\MediaWikiTextThemeDefinitions;
@@ -14,6 +13,7 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use Wikimedia\ObjectCache\BagOStuff;
 use Wikimedia\ObjectCache\WANObjectCache;
+use Wikimedia\Rdbms\Database;
 use Wikimedia\Rdbms\IConnectionProvider;
 
 class ThemeAndFeatureRegistry {
@@ -150,14 +150,14 @@ class ThemeAndFeatureRegistry {
 
             $this->wanObjectCache->delete( $key );
             $this->hashCache->delete( $key );
-    
+
             $this->ids = null;
             $this->infos = null;
         }
     }
 
     /**
-     * @param UserIdentity $user
+     * @param UserIdentity $userIdentity
      * @return array
      */
     public function getAvailableForUser( UserIdentity $userIdentity ): array {

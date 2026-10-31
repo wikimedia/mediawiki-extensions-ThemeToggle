@@ -65,7 +65,7 @@ class SpecialThemeUsage extends QueryPage {
         $html = Html::openElement( 'table', [ 'class' => [ 'sortable', 'wikitable' ] ] );
         $html .= Html::openElement( 'thead', [] );
         $html .= Html::openElement( 'tr', [] );
-        $headers = [ 'themeusage-theme', 'themeusage-usercount' ]; //, 'themeusage-activeusers' ];
+        $headers = [ 'themeusage-theme', 'themeusage-usercount' ]; // , 'themeusage-activeusers' ];
         foreach ( $headers as $h ) {
             if ( $h === 'themeusage-theme' ) {
                 $html .= Html::element( 'th', [], $this->msg( $h )->text() );
