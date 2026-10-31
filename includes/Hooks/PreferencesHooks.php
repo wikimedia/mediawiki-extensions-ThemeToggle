@@ -11,7 +11,8 @@ final class PreferencesHooks implements
     public function __construct(
         private readonly ExtensionConfig $config,
         private readonly ThemeAndFeatureRegistry $registry
-    ) { }
+    ) {
+    }
 
     public function onUserGetDefaultOptions( &$defaultOptions ) {
         $defaultOptions[$this->config->getThemePreferenceName()] = $this->registry->getDefaultThemeId();

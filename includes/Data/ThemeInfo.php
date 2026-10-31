@@ -8,7 +8,7 @@ class ThemeInfo {
     public const KIND_LIGHT = 'light';
     public const KIND_DARK = 'dark';
     public const KIND_UNKNOWN = 'unknown';
-    
+
     private const PUBLIC_TO_PRIVATE_FIELD_MAP = [
         'user-groups' => 'userGroups',
         'in-site-css' => 'inSiteCss',
@@ -25,7 +25,6 @@ class ThemeInfo {
     private bool $inSiteCss = false;
     /** @var string Either dark or light */
     private string $kind = 'unknown';
-
 
     public function __construct( array $info ) {
         foreach ( $info as $option => $params ) {
