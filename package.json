@@ -1,9 +1,9 @@
 {
-    "private": true,
-    "scripts": {
-        "test": "eslint --cache ."
-    },
-    "devDependencies": {
-        "eslint-config-wikimedia": "0.23.0"
-    }
+	"private": true,
+	"scripts": {
+		"test": "eslint --cache ."
+	},
+	"devDependencies": {
+		"eslint-config-wikimedia": "0.23.0"
+	}
 }

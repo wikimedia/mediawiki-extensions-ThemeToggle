@@ -12,13 +12,13 @@ use MediaWiki\User\UserIdentity;
 use WikiPage;
 
 final class CacheManagementHooks implements
-    \MediaWiki\Page\Hook\PageDeleteCompleteHook,
-    \MediaWiki\Storage\Hook\PageSaveCompleteHook
+	\MediaWiki\Page\Hook\PageDeleteCompleteHook,
+	\MediaWiki\Storage\Hook\PageSaveCompleteHook
 {
-    public function __construct(
-        private readonly ThemeAndFeatureRegistry $registry
-    ) {
-    }
+	public function __construct(
+		private readonly ThemeAndFeatureRegistry $registry
+	) {
+	}
 
 	/**
 	 * @param WikiPage $wikiPage WikiPage modified
@@ -32,16 +32,16 @@ final class CacheManagementHooks implements
 	 * @return bool|void True or no return value to continue or false to stop other hook handlers
 	 *    from being called; save cannot be aborted
 	 */
-    public function onPageSaveComplete(
-        $wikiPage,
-        $userIdentity,
-        $summary,
-        $flags,
-        $revisionRecord,
-        $editResult
-    ): void {
-        $this->registry->handlePagePurge( $wikiPage->getTitle() );
-    }
+	public function onPageSaveComplete(
+		$wikiPage,
+		$userIdentity,
+		$summary,
+		$flags,
+		$revisionRecord,
+		$editResult
+	): void {
+		$this->registry->handlePagePurge( $wikiPage->getTitle() );
+	}
 
 	/**
 	 * @param ProperPageIdentity $page Page that was deleted.
@@ -54,15 +54,15 @@ final class CacheManagementHooks implements
 	 * @param int $archivedRevisionCount Number of revisions archived during the deletion
 	 * @return true|void
 	 */
-    public function onPageDeleteComplete(
-        ProperPageIdentity $page,
-        Authority $deleter,
-        string $reason,
-        int $pageID,
-        RevisionRecord $deletedRev,
-        ManualLogEntry $logEntry,
-        int $archivedRevisionCount
-    ): void {
-        $this->registry->handlePagePurge( Title::newFromPageIdentity( $page ) );
-    }
+	public function onPageDeleteComplete(
+		ProperPageIdentity $page,
+		Authority $deleter,
+		string $reason,
+		int $pageID,
+		RevisionRecord $deletedRev,
+		ManualLogEntry $logEntry,
+		int $archivedRevisionCount
+	): void {
+		$this->registry->handlePagePurge( Title::newFromPageIdentity( $page ) );
+	}
 }

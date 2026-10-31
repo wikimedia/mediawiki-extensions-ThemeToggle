@@ -10,43 +10,43 @@ namespace MediaWiki\Extension\ThemeToggle;
  * @since 1.0.0
  */
 class ConfigNames {
-    /**
-     * Name constant. For use in ExtensionConfig.
-     */
-    public const DefaultTheme = 'ThemeToggleDefault';
+	/**
+	 * Name constant. For use in ExtensionConfig.
+	 */
+	public const DefaultTheme = 'ThemeToggleDefault';
 
-    /**
-     * Name constant. For use in ExtensionConfig.
-     */
-    public const DisableAutoDetection = 'ThemeToggleDisableAutoDetection';
+	/**
+	 * Name constant. For use in ExtensionConfig.
+	 */
+	public const DisableAutoDetection = 'ThemeToggleDisableAutoDetection';
 
-    /**
-     * Name constant. For use in ExtensionConfig.
-     */
-    public const SwitcherStyle = 'ThemeToggleSwitcherStyle';
+	/**
+	 * Name constant. For use in ExtensionConfig.
+	 */
+	public const SwitcherStyle = 'ThemeToggleSwitcherStyle';
 
-    /**
-     * Name constant. For use in ExtensionConfig.
-     */
-    public const EnableForAnonymousUsers = 'ThemeToggleEnableForAnonymousUsers';
+	/**
+	 * Name constant. For use in ExtensionConfig.
+	 */
+	public const EnableForAnonymousUsers = 'ThemeToggleEnableForAnonymousUsers';
 
-    /**
-     * Name constant. For use in ExtensionConfig.
-     */
-    public const PreferenceSuffix = 'ThemeTogglePreferenceGroup';
+	/**
+	 * Name constant. For use in ExtensionConfig.
+	 */
+	public const PreferenceSuffix = 'ThemeTogglePreferenceGroup';
 
-    /**
-     * Name constant. For use in ExtensionConfig.
-     */
-    public const LoadScriptOverride = 'ThemeToggleLoadScriptOverride';
+	/**
+	 * Name constant. For use in ExtensionConfig.
+	 */
+	public const LoadScriptOverride = 'ThemeToggleLoadScriptOverride';
 
-    /**
-     * Name constant. For use in ExtensionConfig.
-     */
-    public const DisallowedSkins = 'ThemeToggleDisallowedSkins';
+	/**
+	 * Name constant. For use in ExtensionConfig.
+	 */
+	public const DisallowedSkins = 'ThemeToggleDisallowedSkins';
 
-    /**
-     * Name constant. For use in ExtensionConfig.
-     */
-    public const FeatureVar_EnableFeatures = 'ThemeToggleEnableFeatures';
+	/**
+	 * Name constant. For use in ExtensionConfig.
+	 */
+	public const FeatureVar_EnableFeatures = 'ThemeToggleEnableFeatures';
 }
