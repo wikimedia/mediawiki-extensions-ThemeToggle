@@ -91,7 +91,7 @@ module.exports.trySanitisePreference = function () {
     ) {
         module.exports.changeTheme( module.exports.CONFIG.defaultTheme, {
             fireHooks: false,
-            remember: true,
+            remember: true
         } );
     }
 };
