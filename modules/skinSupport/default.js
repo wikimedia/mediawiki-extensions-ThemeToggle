@@ -18,5 +18,5 @@ module.exports = Object.freeze( {
             this.getPortletOwnerElement().prepend( retval );
         }
         return retval;
-    },
+    }
 } );

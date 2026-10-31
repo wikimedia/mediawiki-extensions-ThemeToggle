@@ -1,7 +1,7 @@
 {
 	"root": true,
 	"extends": [
-		"wikimedia/client-es5",
+		"wikimedia/client-es6",
 		"wikimedia/mediawiki",
         "wikimedia/jquery"
 	],
@@ -14,10 +14,10 @@
 	},
 	"rules": {
         "arrow-parens": [ "error", "as-needed" ],
-		"indent": [ "error", 4, {
+		"indent": [ "off", 4, {
             "SwitchCase": 1
         } ],
-		"max-len": [ "warn", {
+		"max-len": [ "off", {
 			"code": 129
         } ],
         "no-bitwise": "off",
@@ -31,6 +31,10 @@
             "Private/internal/protected methods."
         ],
 		"operator-linebreak": [ "error", "before" ],
-		"one-var": "off"
+		"one-var": "off",
+		"no-var": "off",
+		"no-undef": "off",
+		"compat/compat": "off",
+		"es-x/no-array-prototype-includes": "off"
 	}
 }
