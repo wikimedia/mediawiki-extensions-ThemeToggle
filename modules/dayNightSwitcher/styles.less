@@ -2,40 +2,40 @@
 @import 'mediawiki.mixins.less';
 
 #pt-themes {
-    position: relative;
+	position: relative;
 
-    .ext-themetoggle-simple-icon {
-        display: block;
-        padding: 0.4rem;
-        font-size: 0;
-        transition: all .3s;
+	.ext-themetoggle-simple-icon {
+		display: block;
+		padding: 0.4rem;
+		font-size: 0;
+		transition: all .3s;
 
-        &::before {
-            content: '';
-        }
-    }
+		&::before {
+			content: '';
+		}
+	}
 
-    &:hover .ext-themetoggle-simple-icon {
-        cursor: pointer;
-        border-radius: 0.5rem;
-        background-color: color-mix( in srgb, transparent, @color-base 8% );
-    }
+	&:hover .ext-themetoggle-simple-icon {
+		cursor: pointer;
+		border-radius: 0.5rem;
+		background-color: color-mix( in srgb, transparent, @color-base 8% );
+	}
 }
 
 // Icons
 .ext-themetoggle-simple-icon::before {
-    // Fallback
-    .cdx-mixin-css-icon( @cdx-icon-palette, @param-size-icon: @size-icon-medium );
-    
-    .view-light & {
-        .cdx-mixin-css-icon-background-image( @cdx-icon-bright );
-    }
-    
-    .view-dark & {
-        .cdx-mixin-css-icon-background-image( @cdx-icon-moon );
-    }
+	// Fallback
+	.cdx-mixin-css-icon( @cdx-icon-palette, @param-size-icon: @size-icon-medium );
+	
+	.view-light & {
+		.cdx-mixin-css-icon-background-image( @cdx-icon-bright );
+	}
+	
+	.view-dark & {
+		.cdx-mixin-css-icon-background-image( @cdx-icon-moon );
+	}
 
-    .theme-auto & {
-        .cdx-mixin-css-icon-background-image( @cdx-icon-half-bright );
-    }
+	.theme-auto & {
+		.cdx-mixin-css-icon-background-image( @cdx-icon-half-bright );
+	}
 }

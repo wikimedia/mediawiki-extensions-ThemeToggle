@@ -24,124 +24,116 @@
  *  AutoTarget__Dark:  VARS.AutoTarget__Dark
  */
 
-
 ( () => {
-    const
-        /* @if ( VARS.WithPCSSupport ) */
-        prefersDark = window.matchMedia( '(prefers-color-scheme: dark)' ),
-        /* @endif */
-        /* @if ( VARS.WithThemeLoader ) */
-        LINK_ID = 'mw-themetoggle-styleref',
-        /* @endif */
-        htmlNode = document.documentElement;
-    let
-        /* @if ( VARS.WithThemeLoader ) */
-        linkNode = document.getElementById( LINK_ID ),
-        /* @endif */
-        currentTheme = RLCONF.wgCurrentTheme || VARS.Default;
+	const
+		/* @if ( VARS.WithPCSSupport ) */
+		prefersDark = window.matchMedia( '(prefers-color-scheme: dark)' ),
+		/* @endif */
+		/* @if ( VARS.WithThemeLoader ) */
+		LINK_ID = 'mw-themetoggle-styleref',
+		/* @endif */
+		htmlNode = document.documentElement;
+	let
+		/* @if ( VARS.WithThemeLoader ) */
+		linkNode = document.getElementById( LINK_ID ),
+		/* @endif */
+		currentTheme = RLCONF.wgCurrentTheme || VARS.Default;
 
+	function _setThemeImpl( actualTarget ) {
+		try {
+			if ( actualTarget !== null ) {
+				// Remove all previous classes
+				htmlNode.className = htmlNode.className.replace( / (theme|view|skin-theme-clientpref)-[^\s]+/ig, '' );
+				// Add new classes
+				const
+					themeKind = VARS.ThemeKinds[ actualTarget ] || 'unknown',
+					codexKind = VARS.KindToCodex[ themeKind ];
+				htmlNode.classList.add(
+					// Specific theme class
+					'theme-' + actualTarget,
+					// Generic colour palette "lightness" class
+					`view-${themeKind}`,
+					// Equivalent Codex class
+					`skin-theme-clientpref-${codexKind}`
+				);
 
-    function _setThemeImpl( actualTarget ) {
-        try {
-            if ( actualTarget !== null ) {
-                // Remove all previous classes
-                htmlNode.className = htmlNode.className.replace( / (theme|view|skin-theme-clientpref)-[^\s]+/ig, '' );
-                // Add new classes
-                const
-                    themeKind = VARS.ThemeKinds[ actualTarget ] || 'unknown',
-                    codexKind = VARS.KindToCodex[ themeKind ];
-                htmlNode.classList.add(
-                    // Specific theme class
-                    'theme-' + actualTarget,
-                    // Generic colour palette "lightness" class
-                    `view-${themeKind}`,
-                    // Equivalent Codex class
-                    `skin-theme-clientpref-${codexKind}`
-                );
+				if ( currentTheme === 'auto' ) {
+					htmlNode.classList.add( 'theme-auto' );
+				}
+			}
 
-                if ( currentTheme === 'auto' ) {
-                    htmlNode.classList.add( 'theme-auto' );
-                }
-            }
+			/* @if ( VARS.WithThemeLoader ) */
+			if ( !VARS.SiteBundledCss.includes( actualTarget ) ) {
+				if ( linkNode === null ) {
+					linkNode = document.createElement( 'link' );
+					document.head.appendChild( linkNode );
+				}
+				linkNode.id = LINK_ID;
+				linkNode.rel = 'stylesheet';
+				linkNode.type = 'text/css';
+				linkNode.href = `${VARS.ResourceLoaderEndpoint}&modules=ext.theme.${actualTarget}`;
+			} else if ( linkNode !== null ) {
+				document.head.removeChild( linkNode );
+				linkNode = null;
+			}
+			/* @endif */
+		} catch ( ex ) {
+			setTimeout( () => {
+				throw ex;
+			}, 0 );
+		}
+	}
 
-            /* @if ( VARS.WithThemeLoader ) */
-            if ( !VARS.SiteBundledCss.includes( actualTarget ) ) {
-                if ( linkNode === null ) {
-                    linkNode = document.createElement( 'link' );
-                    document.head.appendChild( linkNode );
-                }
-                linkNode.id = LINK_ID;
-                linkNode.rel = 'stylesheet';
-                linkNode.type = 'text/css';
-                linkNode.href = `${VARS.ResourceLoaderEndpoint}&modules=ext.theme.${actualTarget}`;
-            } else if ( linkNode !== null ) {
-                document.head.removeChild( linkNode );
-                linkNode = null;
-            }
-            /* @endif */
-        } catch ( ex ) {
-            setTimeout( () => {
-                throw ex;
-            }, 0 );
-        }
-    }
+	/* @if ( VARS.WithPCSSupport ) */
+	function _setFromPCS() {
+		_setThemeImpl( prefersDark.matches ? VARS.AutoTarget__Dark : VARS.AutoTarget__Light );
+	}
+	/* @endif */
 
+	window.MwSkinTheme = window.__MwExtTt = Object.freeze( {
+		LOCAL_THEME_PREFERENCE_KEY: 'skin-theme',
+		LOCAL_FEATURE_PREFERENCE_KEY: 'skin-theme-features',
 
-    /* @if ( VARS.WithPCSSupport ) */
-    function _setFromPCS() {
-        _setThemeImpl( prefersDark.matches ? VARS.AutoTarget__Dark : VARS.AutoTarget__Light );
-    }
-    /* @endif */
+		getCurrent() {
+			return currentTheme;
+		},
 
+		set( target ) {
+			currentTheme = target;
 
-    window.MwSkinTheme = window.__MwExtTt = Object.freeze( {
-        LOCAL_THEME_PREFERENCE_KEY: 'skin-theme',
-        LOCAL_FEATURE_PREFERENCE_KEY: 'skin-theme-features',
+			/* @if ( VARS.WithPCSSupport ) */
+			if ( currentTheme === 'auto' ) {
+				// Detect preferred theme by prefers-color-scheme
+				_setFromPCS();
+				// Attach listener for future changes
+				prefersDark.addEventListener( 'change', _setFromPCS );
+			} else {
+				// Apply the theme choice and stop tracking prefers-color-scheme changes
+				_setThemeImpl( currentTheme );
+				prefersDark.removeEventListener( 'change', _setFromPCS );
+			}
+			/* @endif */
 
+			/* @if ( !VARS.WithPCSSupport ) */
+			_setThemeImpl( target );
+			/* @endif */
+		},
 
-        getCurrent() {
-            return currentTheme;
-        },
+		/* @if ( VARS.WithFeatureSupport ) */
+		setFeature( id, value ) {
+			htmlNode.classList[ value ? 'add' : 'remove' ]( `skinext-pref-${id}` );
+		}
+		/* @endif */
+	} );
 
-
-        set( target ) {
-            currentTheme = target;
-
-            /* @if ( VARS.WithPCSSupport ) */
-            if ( currentTheme === 'auto' ) {
-                // Detect preferred theme by prefers-color-scheme
-                _setFromPCS();
-                // Attach listener for future changes
-                prefersDark.addEventListener( 'change', _setFromPCS );
-            } else {
-                // Apply the theme choice and stop tracking prefers-color-scheme changes
-                _setThemeImpl( currentTheme );
-                prefersDark.removeEventListener( 'change', _setFromPCS );
-            }
-            /* @endif */
-
-            /* @if ( !VARS.WithPCSSupport ) */
-            _setThemeImpl( target );
-            /* @endif */
-        },
-
-
-        /* @if ( VARS.WithFeatureSupport ) */
-        setFeature( id, value ) {
-            htmlNode.classList[ value ? 'add' : 'remove' ]( `skinext-pref-${id}` );
-        }
-        /* @endif */
-    } );
-
-
-    // Don't needlessly set the theme if it's already been set server-side
-    if ( !RLCONF.wgCurrentTheme ) {
-        __MwExtTt.set( localStorage.getItem( __MwExtTt.LOCAL_THEME_PREFERENCE_KEY ) || RLCONF.wgCurrentTheme || VARS.Default );
-    }
-    /* @if ( VARS.WithFeatureSupport ) */
-    // TODO: need to support disabling defaults
-    for ( const id of JSON.parse( localStorage.getItem( __MwExtTt.LOCAL_FEATURE_PREFERENCE_KEY ) || '[]' ) ) {
-        __MwExtTt.setFeature( id, true );
-    }
-    /* @endif */
+	// Don't needlessly set the theme if it's already been set server-side
+	if ( !RLCONF.wgCurrentTheme ) {
+		__MwExtTt.set( localStorage.getItem( __MwExtTt.LOCAL_THEME_PREFERENCE_KEY ) || RLCONF.wgCurrentTheme || VARS.Default );
+	}
+	/* @if ( VARS.WithFeatureSupport ) */
+	// TODO: need to support disabling defaults
+	for ( const id of JSON.parse( localStorage.getItem( __MwExtTt.LOCAL_FEATURE_PREFERENCE_KEY ) || '[]' ) ) {
+		__MwExtTt.setFeature( id, true );
+	}
+	/* @endif */
 } )();

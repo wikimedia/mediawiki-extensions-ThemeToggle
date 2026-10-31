@@ -16,7 +16,7 @@ final class ThemeLinksHooks implements
 		private readonly LinkRenderer $linkRenderer,
 		private readonly ThemeAndFeatureRegistry $registry
 	) {
-    }
+	}
 
 	public function onOutputPageParserOutput( $out, $parserOutput ): void {
 		$title = $out->getTitle();
