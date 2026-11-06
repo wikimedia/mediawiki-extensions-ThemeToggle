@@ -1,4 +1,5 @@
 {
+	"name": "ThemeToggle",
 	"private": true,
 	"scripts": {
 		"test": "grunt test"
