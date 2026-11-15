@@ -99,6 +99,9 @@
 				"LinkRenderer",
 				"ThemeToggle.ThemeAndFeatureRegistry"
 			]
+		},
+		"QueryPage": {
+			"class": "MediaWiki\\Extension\\ThemeToggle\\Hooks\\QueryPageHooks"
 		}
 	},
 	"Hooks": {
@@ -109,7 +112,8 @@
 		"ResourceLoaderRegisterModules": "resourceloader",
 		"GetPreferences": "Preferences",
 		"UserGetDefaultOptions": "Preferences",
-		"OutputPageParserOutput": "ThemeLinks"
+		"OutputPageParserOutput": "ThemeLinks",
+		"wgQueryPages": "QueryPage"
 	},
 	"config_prefix": "wgThemeToggle",
 	"config": {
